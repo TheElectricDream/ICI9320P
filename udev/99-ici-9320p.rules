@@ -1,0 +1,13 @@
+# ICI 9320P thermal camera (Cypress FX2LP based, C0-load: VID/PID from EEPROM,
+# firmware uploaded by host). Grants the "usb" and "plugdev" groups read/write
+# access so libusb can open the device without root.
+#
+# Install with:
+#   sudo cp udev/99-ici-9320p.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload-rules && sudo udevadm trigger
+# then unplug/replug the camera.
+#
+# Bare (un-renumerated) device as it enumerates at plug-in time:
+SUBSYSTEM=="usb", ATTR{idVendor}=="2aa9", ATTR{idProduct}=="9f00", MODE="0660", GROUP="usb", TAG+="uaccess"
+# Any other PID the device re-enumerates with after firmware upload:
+SUBSYSTEM=="usb", ATTR{idVendor}=="2aa9", MODE="0660", GROUP="usb", TAG+="uaccess"

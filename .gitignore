@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+.venv/
+
+# captures are large and local; keep the directory
+captures/*
+!captures/.gitkeep
+
+# firmware build outputs (the packaged image lives in ici9320/firmware/ici9320.ihx)
+firmware/explorer/build/
+*.rel
+*.lst
+*.rst
+*.sym
+*.lk
+*.map
+*.mem
+*.adb
+*.cdb
+*.ihx
+!ici9320/firmware/ici9320.ihx
+firmware/fx2lib/lib/fx2.lib
+firmware/fx2lib/**/*.asm
